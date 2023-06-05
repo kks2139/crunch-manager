@@ -10,5 +10,10 @@ module.exports = {
   plugins: ['react-refresh'],
   rules: {
     'react-refresh/only-export-components': 'warn',
+    'react-hooks/exhaustive-deps': ['warn', {enableDangerousAutofixThisMayCauseInfiniteLoops: true}],
+    'sort-keys': 'error',
+    'import/no-duplicates': 'error',
+    'simple-import-sort/exports': 'error',
+    'unused-imports/no-unused-imports': 'error'
   },
 }

@@ -3,8 +3,8 @@
   line-height: 1.5;
 
   // color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+  // color: rgba(255, 255, 255, 0.87);
+  // background-color: #242424;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -16,10 +16,11 @@
   --blue-2: #1d87ff;
   --blue-3: #0065d8;
   --purple-1: #5f3bff;
+  --purple-2: #b4a3ff;
 }
 
 a {
-  text-decoration: inherit;
+  text-decoration: none;
 }
 
 body {
