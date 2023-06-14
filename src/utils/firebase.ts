@@ -1,4 +1,5 @@
 import {initializeApp} from "firebase/app";
+import {getFirestore} from 'firebase/firestore'
 
 const firebaseConfig = {
   apiKey: import.meta.env.VITE_API_KEY,
@@ -10,6 +11,6 @@ const firebaseConfig = {
   appId: import.meta.env.VITE_APP_ID
 };
 
-export const initFirebase = ()=>{
-  initializeApp(firebaseConfig);
-}
+const firebaseApp = initializeApp(firebaseConfig);
+
+export const firestore = getFirestore(firebaseApp);
