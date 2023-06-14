@@ -1,6 +1,5 @@
 import classNames from "classnames/bind";
 import styles from "./index.module.scss";
-import { getPosts } from "../../utils/api";
 import { useState } from "react";
 import { Post } from "../../utils/types";
 
@@ -17,9 +16,6 @@ function Main() {
       <button
         onClick={async (e) => {
           e.preventDefault();
-
-          const res = await getPosts();
-          setPosts(res);
         }}
       >
         새로고침

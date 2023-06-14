@@ -1,5 +1,5 @@
 import {initializeApp} from "firebase/app";
-import {getFirestore} from 'firebase/firestore'
+import {collection, getDocs, getFirestore} from 'firebase/firestore'
 
 const firebaseConfig = {
   apiKey: import.meta.env.VITE_API_KEY,
@@ -11,6 +11,16 @@ const firebaseConfig = {
   appId: import.meta.env.VITE_APP_ID
 };
 
-const firebaseApp = initializeApp(firebaseConfig);
+const app = initializeApp(firebaseConfig);
 
-export const firestore = getFirestore(firebaseApp);
+export const firestore = getFirestore(app);
+
+export function getCollection(name: string){
+  return collection(firestore, name)
+}
+
+export async function getDocsData<T>(colName: string){
+  const snapshot = await getDocs(getCollection(colName));
+
+  return snapshot.docs.map((doc)=> doc.data() as T);
+}
