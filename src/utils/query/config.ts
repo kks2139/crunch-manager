@@ -1,14 +1,17 @@
-import {QueryClient } from "@tanstack/react-query";
+import { QueryClient } from '@tanstack/react-query';
 
 export const QUERY_KEY = {
-  POSTS: 'POSTS'
+  POSTS: 'POSTS',
 } as const;
 
-export const  queryClient = new QueryClient({
+export const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
       networkMode: 'always',
       refetchOnWindowFocus: true,
-    }
-  }
+    },
+    mutations: {
+      networkMode: 'always',
+    },
+  },
 });

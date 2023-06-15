@@ -4,18 +4,16 @@ module.exports = {
     'eslint:recommended',
     'plugin:@typescript-eslint/recommended',
     'plugin:react-hooks/recommended',
-    "plugin:@typescript-eslint/eslint-recommended",
-    "plugin:@typescript-eslint/recommended"
+    'plugin:@typescript-eslint/strict',
   ],
   parser: '@typescript-eslint/parser',
-  parserOptions: { ecmaVersion: 'latest', sourceType: 'module' },
-  plugins: ['react-refresh'],
-  rules: {
-    'react-refresh/only-export-components': 'warn',
-    'react-hooks/exhaustive-deps': ['warn', {enableDangerousAutofixThisMayCauseInfiniteLoops: true}],
-    'sort-keys': 'error',
-    'import/no-duplicates': 'error',
-    'simple-import-sort/exports': 'error',
-    'unused-imports/no-unused-imports': 'error'
+  parserOptions: {
+    ecmaVersion: 'latest',
+    sourceType: 'module',
+    project: ['./tsconfig.eslint.json', './packages/*/tsconfig.json'],
+    tsconfigRootDir: __dirname,
   },
-}
+  plugins: ['react-refresh', '@typescript-eslint'],
+  root: true,
+  rules: {},
+};

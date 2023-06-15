@@ -1,11 +1,12 @@
-import {useQuery} from '@tanstack/react-query'
-import { QUERY_KEY } from './config'
-import { getDocsData } from '../firebase'
-import { Post } from '../types'
+import { useQuery, UseQueryOptions } from '@tanstack/react-query';
+import { QUERY_KEY } from './config';
+import { getDocuments } from '../firebase';
+import { Post } from '../types';
 
-export function  usePostsClient(){
+export function usePostsQuery(options?: UseQueryOptions<Post[]>) {
   return useQuery<Post[]>({
+    ...options,
     queryKey: [QUERY_KEY.POSTS],
-    queryFn: ()=> getDocsData('post'),
-  })
+    queryFn: () => getDocuments('post'),
+  });
 }
