@@ -1,6 +1,6 @@
 .Button {
   padding: 10px 15px;
-  border-radius: 8px;
+  border-radius: 6px;
   background-color: var(--blue-1);
   box-shadow: 0 0 10px gray;
   cursor: pointer;
@@ -13,5 +13,8 @@
   }
   &:active {
     background-color: var(--blue-3);
+  }
+  &.loading {
+    // TODO: 로딩효과
   }
 }

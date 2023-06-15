@@ -1,0 +1,30 @@
+.Post {
+  margin: 0 30px;
+
+  .comments {
+    .row {
+      display: flex;
+      font-weight: bold;
+      padding-bottom: 10px;
+      margin-bottom: 10px;
+      box-shadow: 0 1px 0 0 var(--purple-1);
+
+      .name {
+        min-width: 120px;
+        color: var(--purple-1);
+      }
+    }
+  }
+
+  .post-box {
+    display: flex;
+    justify-content: center;
+
+    > input {
+      font-size: 18px;
+      font-weight: bold;
+      border: 1px solid var(--purple-1);
+      border-radius: 6px;
+    }
+  }
+}
