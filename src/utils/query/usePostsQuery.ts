@@ -1,12 +1,22 @@
-import { useQuery, UseQueryOptions } from '@tanstack/react-query';
 import { QUERY_KEY } from './config';
-import { getDocuments } from '../firebase';
+import { getColRef } from '../firebase';
+import { useFirestoreQuery } from '@react-query-firebase/firestore';
+import { query } from 'firebase/firestore';
 import { Post } from '../types';
 
-export function usePostsQuery(options?: UseQueryOptions<Post[]>) {
-  return useQuery<Post[]>({
-    ...options,
-    queryKey: [QUERY_KEY.POSTS],
-    queryFn: () => getDocuments('post'),
-  });
+interface PostData extends Post {
+  id: string;
+}
+
+export function usePostsQuery() {
+  return useFirestoreQuery<Post, PostData[]>(
+    [QUERY_KEY.POSTS],
+    query(getColRef('post')),
+    undefined,
+    {
+      select: (data) => {
+        return data.docs.map((snapshot) => ({ id: snapshot.id, ...snapshot.data() }));
+      },
+    }
+  );
 }

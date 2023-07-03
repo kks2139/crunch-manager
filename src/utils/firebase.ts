@@ -1,5 +1,14 @@
 import { initializeApp } from 'firebase/app';
-import { addDoc, collection, getDocs, getFirestore } from 'firebase/firestore';
+import {
+  CollectionReference,
+  addDoc,
+  collection,
+  getDocs,
+  getFirestore,
+  limit,
+  orderBy,
+  query,
+} from 'firebase/firestore';
 
 type CollectionName = 'post' | 'maker';
 
@@ -20,12 +29,14 @@ const app = initializeApp(firebaseConfig);
 // DB get
 export const firestore = getFirestore(app);
 
-export function getCollection(name: string) {
-  return collection(firestore, name);
+export function getColRef<T>(colName: CollectionName) {
+  const ref = collection(firestore, colName) as CollectionReference<T>;
+
+  return ref;
 }
 
 export async function getDocuments<T>(colName: CollectionName) {
-  const snapshot = await getDocs(getCollection(colName));
+  const snapshot = await getDocs(getColRef(colName));
 
   return snapshot.docs.map((doc) => doc.data() as T);
 }
@@ -34,5 +45,5 @@ export async function addDocInCollection<T extends { [x: string]: any }>(
   colName: CollectionName,
   data: T
 ) {
-  return addDoc(getCollection(colName), { ...data });
+  return addDoc(getColRef(colName), { ...data });
 }

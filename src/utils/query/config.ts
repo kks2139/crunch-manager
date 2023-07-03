@@ -1,4 +1,4 @@
-import { QueryClient } from '@tanstack/react-query';
+import { QueryClient } from 'react-query';
 
 export const QUERY_KEY = {
   POSTS: 'POSTS',
@@ -8,11 +8,10 @@ export const QUERY_KEY = {
 export const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
-      networkMode: 'always',
       refetchOnWindowFocus: true,
     },
     mutations: {
-      networkMode: 'always',
+      //
     },
   },
 });
